@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pollpe/details.dart';
+import 'package:pollpe/find_account.dart';
+import 'package:pollpe/signin.dart';
 import 'package:pollpe/welcome.dart';
 
 void main() {
@@ -13,11 +16,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Welcome(),
+      home: Details(),
     );
   }
 }
