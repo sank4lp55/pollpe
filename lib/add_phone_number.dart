@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:pollpe/signin.dart';
+import 'package:pollpe/constants.dart';
+import 'package:pollpe/otp.dart';
 
-class Welcome extends StatefulWidget {
-  const Welcome({super.key});
+class AddPhoneNumber extends StatefulWidget {
+  const AddPhoneNumber({super.key});
 
   @override
-  State<Welcome> createState() => _WelcomeState();
+  State<AddPhoneNumber> createState() => _AddPhoneNumberState();
 }
 
-class _WelcomeState extends State<Welcome> {
+class _AddPhoneNumberState extends State<AddPhoneNumber> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -63,7 +64,7 @@ class _WelcomeState extends State<Welcome> {
                       children: [
                         Container(
                           width: w * 0.12,
-                          child: Image.asset("assets/smartphone.png"),
+                          child: Image.asset("assets/man.png"),
                         ),
                         const SizedBox(
                           width: 30,
@@ -77,7 +78,7 @@ class _WelcomeState extends State<Welcome> {
                                     style: TextStyle(color: Colors.black),
                                     children: [
                                       TextSpan(
-                                        text: 'Welcome To ',
+                                        text: 'Hi, Amar Singh\n',
                                         style: TextStyle(
                                           fontSize: 24,
                                           fontWeight: FontWeight.bold,
@@ -86,30 +87,10 @@ class _WelcomeState extends State<Welcome> {
                                         ),
                                       ),
                                       TextSpan(
-                                        text: 'Poll',
+                                        text: 'Nice to meet you!',
                                         style: TextStyle(
-                                          fontSize: 24,
-                                          fontWeight: FontWeight.bold,
-                                          color: Color(0xFFA200ED),
-                                          // fontFamily:
-                                          //     GoogleFonts.poppins().fontFamily,
-                                        ),
-                                      ),
-                                      TextSpan(
-                                        text: 'Pe\n',
-                                        style: TextStyle(
-                                          fontSize: 24,
-                                          fontWeight: FontWeight.bold,
-                                          color: Color(0xFFFF9309),
-                                          // fontFamily:
-                                          //     GoogleFonts.poppins().fontFamily,
-                                        ),
-                                      ),
-                                      TextSpan(
-                                        text: '#EarnKarBefikar',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 20,
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 17,
                                             color: Colors.grey),
                                       ),
                                     ],
@@ -141,14 +122,14 @@ class _WelcomeState extends State<Welcome> {
                             width: h * 0.03,
                             height: h * 0.03,
                             child: Image.asset(
-                              "assets/google.png",
+                              "assets/telephone.png",
                               //height: 40,
                             ),
                           ),
                           Expanded(child: Container()),
                           Container(
                             child: const Text(
-                              "Sign up with google",
+                              "Verify with Truecaller",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 20),
                             ),
@@ -157,16 +138,16 @@ class _WelcomeState extends State<Welcome> {
                         ],
                       ),
                     ),
-                    const Column(
-                      children: [
-                        Text(
-                          "By signing up, ypu agree to the Terms of Services",
-                          style: TextStyle(color: Colors.grey),
-                        ),
-                        Text("and Privacy Policy, including Cooking Use.",
-                            style: TextStyle(color: Colors.grey)),
-                      ],
-                    ),
+                    // const Column(
+                    //   children: [
+                    //     Text(
+                    //       "By signing up, ypu agree to the Terms of Services",
+                    //       style: TextStyle(color: Colors.grey),
+                    //     ),
+                    //     Text("and Privacy Policy, including Cooking Use.",
+                    //         style: TextStyle(color: Colors.grey)),
+                    //   ],
+                    // ),
                     const Row(children: <Widget>[
                       SizedBox(
                         width: 20,
@@ -184,14 +165,64 @@ class _WelcomeState extends State<Welcome> {
                         width: 20,
                       ),
                     ]),
-                    const Text("Already Have an account?",
+                    // const Text("Already Have an account?",
+                    //     style: TextStyle(
+                    //         color: Colors.black,
+                    //         fontSize: 20,
+                    //         fontWeight: FontWeight.bold)),
+                    Container(
+                      //margin: EdgeInsets.symmetric(vertical: 30),
+                      // padding: const EdgeInsets.symmetric(
+                      //     horizontal: 20, vertical: 0.7),
+                      width: w * 0.75,
+                      height: h * 0.06,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: const Color(0xFFECEDEF),
+                        ),
+                        color: const Color(0xFFF6F7FE),
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: TextFormField(
+                        keyboardType: TextInputType.number,
                         style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold)),
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        decoration: InputDecoration(
+                          prefixText: "IN+91",
+                          prefixStyle:
+                              TextStyle(color: Color(0xFFA200ED), fontSize: 18),
+                          hintText: "Mobile Number",
+                          hintStyle:
+                              TextStyle(color: Color(0xFF898494), fontSize: 18),
+                          enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.transparent),
+                              borderRadius: BorderRadius.circular(10)),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.transparent),
+                              borderRadius: BorderRadius.circular(10)),
+                          // prefix: Padding(
+                          //   padding: EdgeInsets.fromLTRB(8, 0, 8, 0),
+                          //   child: Text(
+                          //     'IN+91',
+                          //     style: TextStyle(
+                          //         fontSize: 18,
+                          //         fontWeight: FontWeight.bold,
+                          //         color: Color(0xFFA200ED)),
+                          //   ),
+                          // ),
+                          suffixIcon: Icon(
+                            Icons.check_circle,
+                            color: Colors.green,
+                            size: w * 0.08,
+                          ),
+                        ),
+                      ),
+                    ),
                     InkWell(
                       onTap: () {
-                        Get.to(SignIn());
+                        Get.to(Otp());
                       },
                       child: Container(
                         width: w * 0.75,
@@ -209,17 +240,27 @@ class _WelcomeState extends State<Welcome> {
                             Expanded(child: Container()),
                             Container(
                               child: const Text(
-                                "Sign in",
+                                "Send OTP",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20,
-                                    color: Color(0xFFA200ED)),
+                                    color: purple),
                               ),
                             ),
                             Expanded(child: Container()),
                           ],
                         ),
                       ),
+                    ),
+                    const Column(
+                      children: [
+                        Text(
+                          "You may recieve SMS notifications from us for",
+                          style: TextStyle(color: Colors.grey),
+                        ),
+                        Text("security and login purposes.",
+                            style: TextStyle(color: Colors.grey)),
+                      ],
                     ),
                   ],
                 ),

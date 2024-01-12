@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:pollpe/add_phone_number.dart';
 
 class Details extends StatefulWidget {
   const Details({super.key});
@@ -275,31 +277,36 @@ class _DetailsState extends State<Details> {
                         ),
                       ],
                     ),
-                    Container(
-                      width: w * 0.75,
-                      height: h * 0.06,
-                      //padding: EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        // border: Border.all(
-                        //   color: Color(0xFFECEDEF),
-                        // ),
-                        borderRadius: BorderRadius.circular(16),
-                        color: const Color(0xFFF6F7FE),
-                      ),
-                      child: Row(
-                        children: [
-                          Expanded(child: Container()),
-                          Container(
-                            child: const Text(
-                              "Continue",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20,
-                                  color: Colors.grey),
+                    InkWell(
+                      onTap: () {
+                        Get.to(AddPhoneNumber());
+                      },
+                      child: Container(
+                        width: w * 0.75,
+                        height: h * 0.06,
+                        //padding: EdgeInsets.all(20),
+                        decoration: BoxDecoration(
+                          // border: Border.all(
+                          //   color: Color(0xFFECEDEF),
+                          // ),
+                          borderRadius: BorderRadius.circular(16),
+                          color: const Color(0xFFF6F7FE),
+                        ),
+                        child: Row(
+                          children: [
+                            Expanded(child: Container()),
+                            Container(
+                              child: const Text(
+                                "Continue",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                    color: Colors.grey),
+                              ),
                             ),
-                          ),
-                          Expanded(child: Container()),
-                        ],
+                            Expanded(child: Container()),
+                          ],
+                        ),
                       ),
                     ),
                   ],

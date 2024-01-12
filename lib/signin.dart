@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:pollpe/find_account.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -317,30 +319,35 @@ class _SignInState extends State<SignIn> {
                         ],
                       ),
                     ),
-                    RichText(
-                      text: const TextSpan(
-                        style: TextStyle(color: Colors.black),
-                        children: [
-                          TextSpan(
-                            text: 'Forgot Password? ',
-                            style: TextStyle(
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold,
-                              //fontFamily:
-                              //GoogleFonts.poppins().fontFamily,
+                    InkWell(
+                      onTap: () {
+                        Get.to(FindAccount());
+                      },
+                      child: RichText(
+                        text: const TextSpan(
+                          style: TextStyle(color: Colors.black),
+                          children: [
+                            TextSpan(
+                              text: 'Forgot Password? ',
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
+                                //fontFamily:
+                                //GoogleFonts.poppins().fontFamily,
+                              ),
                             ),
-                          ),
-                          TextSpan(
-                            text: 'Poll',
-                            style: TextStyle(
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xFFA200ED),
-                              // fontFamily:
-                              //     GoogleFonts.poppins().fontFamily,
+                            TextSpan(
+                              text: 'Click Here',
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFFA200ED),
+                                // fontFamily:
+                                //     GoogleFonts.poppins().fontFamily,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ],
