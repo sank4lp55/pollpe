@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:pollpe/constants.dart';
 import 'package:pollpe/find_account.dart';
 import 'package:pollpe/navigation_container.dart';
 
@@ -17,6 +18,9 @@ class _SignInState extends State<SignIn> {
 
   User? _user;
 
+  bool textField1Filled = false;
+  bool textField2Filled = false;
+  bool isEnabled = false;
   @override
   void initState() {
     // TODO: implement initState
@@ -281,7 +285,7 @@ class _SignInState extends State<SignIn> {
                             color: const Color(0xFFF6F7FE),
                             borderRadius: BorderRadius.circular(16),
                           ),
-                          child: const TextField(
+                          child: TextField(
                             decoration: InputDecoration(
                               //focusColor: Colors.,
                               hintText: "Enter Phone, Email or Username",
@@ -290,6 +294,21 @@ class _SignInState extends State<SignIn> {
 
                               border: InputBorder.none,
                             ),
+                            onChanged: (content) {
+                              if (content != "") {
+                                textField1Filled = true;
+                                if (textField1Filled && textField2Filled) {
+                                  setState(() {
+                                    isEnabled = true;
+                                  });
+                                }
+                              } else {
+                                textField1Filled = false;
+                                setState(() {
+                                  isEnabled = false;
+                                });
+                              }
+                            },
                           ),
                         ),
                         SizedBox(
@@ -308,7 +327,7 @@ class _SignInState extends State<SignIn> {
                             color: const Color(0xFFF6F7FE),
                             borderRadius: BorderRadius.circular(16),
                           ),
-                          child: const TextField(
+                          child: TextField(
                             decoration: InputDecoration(
                               //focusColor: Colors.,
                               hintText: "Enter your Password",
@@ -317,36 +336,57 @@ class _SignInState extends State<SignIn> {
 
                               border: InputBorder.none,
                             ),
+                            onChanged: (content) {
+                              if (content != "") {
+                                textField2Filled = true;
+                                if (textField1Filled && textField2Filled) {
+                                  setState(() {
+                                    isEnabled = true;
+                                  });
+                                }
+                              } else {
+                                textField2Filled = false;
+                                setState(() {
+                                  isEnabled = false;
+                                });
+                              }
+                            },
                           ),
                         ),
                       ],
                     ),
 
-                    Container(
-                      width: w * 0.75,
-                      height: h * 0.06,
-                      //padding: EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        // border: Border.all(
-                        //   color: Color(0xFFECEDEF),
-                        // ),
-                        borderRadius: BorderRadius.circular(16),
-                        color: const Color(0xFFF6F7FE),
-                      ),
-                      child: Row(
-                        children: [
-                          Expanded(child: Container()),
-                          Container(
-                            child: const Text(
-                              "Continue",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20,
-                                  color: Colors.grey),
+                    InkWell(
+                      onTap: () {
+                        Get.offAll(NavigationContainer());
+                      },
+                      child: Container(
+                        width: w * 0.75,
+                        height: h * 0.06,
+                        //padding: EdgeInsets.all(20),
+                        decoration: BoxDecoration(
+                          // border: Border.all(
+                          //   color: Color(0xFFECEDEF),
+                          // ),
+                          borderRadius: BorderRadius.circular(16),
+                          color: isEnabled ? purple : Color(0xFFF6F7FE),
+                        ),
+                        child: Row(
+                          children: [
+                            Expanded(child: Container()),
+                            Container(
+                              child: Text(
+                                "Continue",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                    color:
+                                        isEnabled ? Colors.white : Colors.grey),
+                              ),
                             ),
-                          ),
-                          Expanded(child: Container()),
-                        ],
+                            Expanded(child: Container()),
+                          ],
+                        ),
                       ),
                     ),
                     InkWell(
