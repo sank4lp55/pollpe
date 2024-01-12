@@ -5,7 +5,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:pollpe/constants.dart';
+import 'package:pollpe/utils/constants.dart';
 import 'package:pollpe/homepage.dart';
 import 'package:pollpe/profile.dart';
 

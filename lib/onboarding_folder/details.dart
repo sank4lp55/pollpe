@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:pollpe/add_phone_number.dart';
-import 'package:pollpe/constants.dart';
+import 'package:pollpe/onboarding_folder/add_phone_number.dart';
+import 'package:pollpe/utils/constants.dart';
 
 class Details extends StatefulWidget {
   const Details({super.key});

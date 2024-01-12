@@ -2,8 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:pollpe/details.dart';
-import 'package:pollpe/signin.dart';
+import 'package:pollpe/onboarding_folder/details.dart';
+import 'package:pollpe/signin_folder/signin.dart';
 
 class Welcome extends StatefulWidget {
   const Welcome({super.key});

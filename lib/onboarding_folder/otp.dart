@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:pollpe/constants.dart';
-import 'package:pollpe/password.dart';
+import 'package:pollpe/utils/constants.dart';
+import 'package:pollpe/onboarding_folder/password.dart';
 
 class Otp extends StatefulWidget {
   const Otp({super.key});

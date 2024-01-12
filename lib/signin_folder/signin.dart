@@ -2,8 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:pollpe/constants.dart';
-import 'package:pollpe/find_account.dart';
+import 'package:pollpe/utils/constants.dart';
+import 'package:pollpe/signin_folder/find_account.dart';
 import 'package:pollpe/navigation_container.dart';
 
 class SignIn extends StatefulWidget {
