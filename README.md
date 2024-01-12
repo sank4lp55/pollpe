@@ -14,11 +14,11 @@ Welcome Screen(welcome.dart) -> (Google sign-up(New User)->Details Screen(detail
 
 ## Packages used:
 
-  flutter_svg: ^2.0.9
-  get: ^4.6.5
-  google_sign_in: ^6.1.5
-  firebase_core: ^2.17.0
-  firebase_auth: ^4.10.1
+  flutter_svg: ^2.0.9<br/>
+  get: ^4.6.5<br/>
+  google_sign_in: ^6.1.5<br/>
+  firebase_core: ^2.17.0<br/>
+  firebase_auth: ^4.10.1<br/>
 
 
 
