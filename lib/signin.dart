@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:pollpe/find_account.dart';
+import 'package:pollpe/navigation_container.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -11,6 +13,29 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  User? _user;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _auth.authStateChanges().listen((event) {
+      setState(() {
+        _user = event;
+      });
+    });
+  }
+
+  Future<void> _handleGoogleSignIn() async {
+    try {
+      GoogleAuthProvider _googleAuthProvider = GoogleAuthProvider();
+      _auth.signInWithProvider(_googleAuthProvider);
+      Get.offAll(NavigationContainer());
+    } catch (error) {}
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -124,41 +149,46 @@ class _SignInState extends State<SignIn> {
                     ),
                     Column(
                       children: [
-                        Container(
-                          width: w * 0.75,
-                          height: h * 0.06,
-                          //padding: EdgeInsets.all(20),
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: const Color(0xFFECEDEF),
+                        InkWell(
+                          onTap: () {
+                            _handleGoogleSignIn();
+                          },
+                          child: Container(
+                            width: w * 0.75,
+                            height: h * 0.06,
+                            //padding: EdgeInsets.all(20),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: const Color(0xFFECEDEF),
+                              ),
+                              borderRadius: BorderRadius.circular(16),
+                              color: const Color(0xFFF6F7FE),
                             ),
-                            borderRadius: BorderRadius.circular(16),
-                            color: const Color(0xFFF6F7FE),
-                          ),
-                          child: Row(
-                            children: [
-                              const SizedBox(
-                                width: 20,
-                              ),
-                              Container(
-                                width: h * 0.03,
-                                height: h * 0.03,
-                                child: Image.asset(
-                                  "assets/google.png",
-                                  //height: 40,
+                            child: Row(
+                              children: [
+                                const SizedBox(
+                                  width: 20,
                                 ),
-                              ),
-                              Expanded(child: Container()),
-                              Container(
-                                child: const Text(
-                                  "Sign up with google",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20),
+                                Container(
+                                  width: h * 0.03,
+                                  height: h * 0.03,
+                                  child: Image.asset(
+                                    "assets/google.png",
+                                    //height: 40,
+                                  ),
                                 ),
-                              ),
-                              Expanded(child: Container()),
-                            ],
+                                Expanded(child: Container()),
+                                Container(
+                                  child: const Text(
+                                    "Sign in with google",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20),
+                                  ),
+                                ),
+                                Expanded(child: Container()),
+                              ],
+                            ),
                           ),
                         ),
                         const SizedBox(
@@ -191,7 +221,7 @@ class _SignInState extends State<SignIn> {
                               Expanded(child: Container()),
                               Container(
                                 child: const Text(
-                                  "Sign up with Truecaller",
+                                  "Sign in with Truecaller",
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 20),

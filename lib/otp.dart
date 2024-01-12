@@ -12,6 +12,12 @@ class Otp extends StatefulWidget {
 }
 
 class _OtpState extends State<Otp> {
+  bool isEnabled = false;
+
+  bool textField1Filled = false;
+  bool textField2Filled = false;
+  bool textField3Filled = false;
+  bool textField4Filled = false;
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -114,7 +120,6 @@ class _OtpState extends State<Otp> {
                         )
                       ],
                     ),
-
                     RichText(
                       text: const TextSpan(
                         style: TextStyle(color: Colors.black),
@@ -155,10 +160,14 @@ class _OtpState extends State<Otp> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  _textFieldOTP(first: true, last: false),
-                                  _textFieldOTP(first: false, last: false),
-                                  _textFieldOTP(first: false, last: false),
-                                  _textFieldOTP(first: false, last: true),
+                                  _textFieldOTP(
+                                      first: true, last: false, index: 1),
+                                  _textFieldOTP(
+                                      first: false, last: false, index: 2),
+                                  _textFieldOTP(
+                                      first: false, last: false, index: 3),
+                                  _textFieldOTP(
+                                      first: false, last: true, index: 4),
                                 ],
                               ),
                               SizedBox(
@@ -191,18 +200,19 @@ class _OtpState extends State<Otp> {
                               //   color: Color(0xFFECEDEF),
                               // ),
                               borderRadius: BorderRadius.circular(16),
-                              color: const Color(0xFFF6F7FE),
+                              color: isEnabled ? purple : Color(0xFFF6F7FE),
                             ),
                             child: Row(
                               children: [
                                 Expanded(child: Container()),
                                 Container(
-                                  child: const Text(
+                                  child: Text(
                                     "VERIFY",
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 18,
-                                        color: Color(0xFFA200ED)),
+                                        color:
+                                            isEnabled ? Colors.white : purple),
                                   ),
                                 ),
                                 Expanded(child: Container()),
@@ -212,125 +222,6 @@ class _OtpState extends State<Otp> {
                         ),
                       ],
                     ),
-                    // Container(
-                    //   width: w * 0.75,
-                    //   height: h * 0.06,
-                    //   //padding: EdgeInsets.all(20),
-                    //   decoration: BoxDecoration(
-                    //     border: Border.all(
-                    //       color: const Color(0xFFECEDEF),
-                    //     ),
-                    //     borderRadius: BorderRadius.circular(16),
-                    //     color: const Color(0xFFF6F7FE),
-                    //   ),
-                    //   child: Row(
-                    //     children: [
-                    //       const SizedBox(
-                    //         width: 20,
-                    //       ),
-                    //       Container(
-                    //         width: h * 0.03,
-                    //         height: h * 0.03,
-                    //         child: Image.asset(
-                    //           "assets/telephone.png",
-                    //           //height: 40,
-                    //         ),
-                    //       ),
-                    //       Expanded(child: Container()),
-                    //       Container(
-                    //         child: const Text(
-                    //           "Verify with Truecaller",
-                    //           style: TextStyle(
-                    //               fontWeight: FontWeight.bold, fontSize: 20),
-                    //         ),
-                    //       ),
-                    //       Expanded(child: Container()),
-                    //     ],
-                    //   ),
-                    // ),
-                    // const Column(
-                    //   children: [
-                    //     Text(
-                    //       "By signing up, ypu agree to the Terms of Services",
-                    //       style: TextStyle(color: Colors.grey),
-                    //     ),
-                    //     Text("and Privacy Policy, including Cooking Use.",
-                    //         style: TextStyle(color: Colors.grey)),
-                    //   ],
-                    // ),
-                    // const Row(children: <Widget>[
-                    //   SizedBox(
-                    //     width: 20,
-                    //   ),
-                    //   Expanded(child: Divider()),
-                    //   SizedBox(
-                    //     width: 20,
-                    //   ),
-                    //   Text("OR"),
-                    //   SizedBox(
-                    //     width: 20,
-                    //   ),
-                    //   Expanded(child: Divider()),
-                    //   SizedBox(
-                    //     width: 20,
-                    //   ),
-                    // ]),
-                    // const Text("Already Have an account?",
-                    //     style: TextStyle(
-                    //         color: Colors.black,
-                    //         fontSize: 20,
-                    //         fontWeight: FontWeight.bold)),
-                    // Container(
-                    //   //margin: EdgeInsets.symmetric(vertical: 30),
-                    //   // padding: const EdgeInsets.symmetric(
-                    //   //     horizontal: 20, vertical: 0.7),
-                    //   width: w * 0.75,
-                    //   height: h * 0.06,
-                    //   decoration: BoxDecoration(
-                    //     border: Border.all(
-                    //       color: const Color(0xFFECEDEF),
-                    //     ),
-                    //     color: const Color(0xFFF6F7FE),
-                    //     borderRadius: BorderRadius.circular(16),
-                    //   ),
-                    //   child: TextFormField(
-                    //     keyboardType: TextInputType.number,
-                    //     style: TextStyle(
-                    //       fontSize: 18,
-                    //       fontWeight: FontWeight.bold,
-                    //     ),
-                    //     decoration: InputDecoration(
-                    //       prefixText: "IN+91",
-                    //       prefixStyle:
-                    //           TextStyle(color: Color(0xFFA200ED), fontSize: 18),
-                    //       hintText: "Mobile Number",
-                    //       hintStyle:
-                    //           TextStyle(color: Color(0xFF898494), fontSize: 18),
-                    //       enabledBorder: OutlineInputBorder(
-                    //           borderSide: BorderSide(color: Colors.transparent),
-                    //           borderRadius: BorderRadius.circular(10)),
-                    //       focusedBorder: OutlineInputBorder(
-                    //           borderSide: BorderSide(color: Colors.transparent),
-                    //           borderRadius: BorderRadius.circular(10)),
-                    //       // prefix: Padding(
-                    //       //   padding: EdgeInsets.fromLTRB(8, 0, 8, 0),
-                    //       //   child: Text(
-                    //       //     'IN+91',
-                    //       //     style: TextStyle(
-                    //       //         fontSize: 18,
-                    //       //         fontWeight: FontWeight.bold,
-                    //       //         color: Color(0xFFA200ED)),
-                    //       //   ),
-                    //       // ),
-                    //       suffixIcon: Icon(
-                    //         Icons.check_circle,
-                    //         color: Colors.green,
-                    //         size: w * 0.08,
-                    //       ),
-                    //     ),
-                    //   ),
-                    // ),
-
                     const Column(
                       children: [
                         Text(
@@ -351,7 +242,7 @@ class _OtpState extends State<Otp> {
     ));
   }
 
-  Widget _textFieldOTP({bool? first, last}) {
+  Widget _textFieldOTP({bool? first, last, index}) {
     var size = MediaQuery.of(context).size;
     var height = size.height;
     var width = size.width;
@@ -368,6 +259,75 @@ class _OtpState extends State<Otp> {
             }
             if (value.length == 0 && first == false) {
               FocusScope.of(context).previousFocus();
+            }
+            if (index == 1) {
+              if (value != "") {
+                textField1Filled = true;
+                if (textField1Filled &&
+                    textField2Filled &&
+                    textField3Filled &&
+                    textField4Filled) {
+                  setState(() {
+                    isEnabled = true;
+                  });
+                }
+              } else {
+                textField1Filled = false;
+                setState(() {
+                  isEnabled = false;
+                });
+              }
+            } else if (index == 2) {
+              if (value != "") {
+                textField2Filled = true;
+                if (textField1Filled &&
+                    textField2Filled &&
+                    textField3Filled &&
+                    textField4Filled) {
+                  setState(() {
+                    isEnabled = true;
+                  });
+                }
+              } else {
+                textField2Filled = false;
+                setState(() {
+                  isEnabled = false;
+                });
+              }
+            } else if (index == 3) {
+              if (value != "") {
+                textField3Filled = true;
+                if (textField1Filled &&
+                    textField2Filled &&
+                    textField3Filled &&
+                    textField4Filled) {
+                  setState(() {
+                    isEnabled = true;
+                  });
+                }
+              } else {
+                textField3Filled = false;
+                setState(() {
+                  isEnabled = false;
+                });
+              }
+            } else {
+              if (value != "") {
+                textField4Filled = true;
+                if (textField1Filled &&
+                    textField2Filled &&
+                    textField3Filled &&
+                    textField4Filled) {
+                  setState(() {
+                    isEnabled = true;
+                  });
+                }
+              } else {
+                textField4Filled = false;
+                setState(() {
+                  isEnabled = false;
+                });
+              }
             }
           },
           showCursor: false,

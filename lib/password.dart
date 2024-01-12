@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:pollpe/add_phone_number.dart';
+import 'package:pollpe/constants.dart';
+import 'package:pollpe/navigation_container.dart';
 
 class Password extends StatefulWidget {
   const Password({super.key});
@@ -11,6 +13,9 @@ class Password extends StatefulWidget {
 }
 
 class _PasswordState extends State<Password> {
+  bool textField1Filled = false;
+  bool textField2Filled = false;
+  bool isEnabled = false;
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -126,7 +131,7 @@ class _PasswordState extends State<Password> {
                             color: const Color(0xFFF6F7FE),
                             borderRadius: BorderRadius.circular(16),
                           ),
-                          child: const TextField(
+                          child: TextField(
                             decoration: InputDecoration(
                               //focusColor: Colors.,
                               //prefixIcon: Icon(Icons.person),
@@ -136,6 +141,21 @@ class _PasswordState extends State<Password> {
 
                               border: InputBorder.none,
                             ),
+                            onChanged: (content) {
+                              if (content != "") {
+                                textField1Filled = true;
+                                if (textField1Filled && textField2Filled) {
+                                  setState(() {
+                                    isEnabled = true;
+                                  });
+                                }
+                              } else {
+                                textField1Filled = false;
+                                setState(() {
+                                  isEnabled = false;
+                                });
+                              }
+                            },
                           ),
                         ),
                         SizedBox(
@@ -154,7 +174,7 @@ class _PasswordState extends State<Password> {
                             color: const Color(0xFFF6F7FE),
                             borderRadius: BorderRadius.circular(16),
                           ),
-                          child: const TextField(
+                          child: TextField(
                             decoration: InputDecoration(
                               //focusColor: Colors.,
                               //prefixIcon: Icon(Icons.person),
@@ -164,42 +184,30 @@ class _PasswordState extends State<Password> {
 
                               border: InputBorder.none,
                             ),
+                            onChanged: (content) {
+                              if (content != "") {
+                                textField2Filled = true;
+                                if (textField1Filled && textField2Filled) {
+                                  setState(() {
+                                    isEnabled = true;
+                                  });
+                                }
+                              } else {
+                                textField2Filled = false;
+                                setState(() {
+                                  isEnabled = false;
+                                });
+                              }
+                            },
                           ),
                         ),
-                        // SizedBox(
-                        //   height: 20,
-                        // ),
-                        // Container(
-                        //   //margin: EdgeInsets.symmetric(vertical: 30),
-                        //   padding: const EdgeInsets.symmetric(
-                        //       horizontal: 20, vertical: 0.7),
-                        //   width: w * 0.75,
-                        //   height: h * 0.06,
-                        //   decoration: BoxDecoration(
-                        //     border: Border.all(
-                        //       color: const Color(0xFFECEDEF),
-                        //     ),
-                        //     color: const Color(0xFFF6F7FE),
-                        //     borderRadius: BorderRadius.circular(16),
-                        //   ),
-                        //   child: const TextField(
-                        //     decoration: InputDecoration(
-                        //       //focusColor: Colors.,
-                        //       //prefixIcon: Icon(Icons.person),
-                        //       hintText: "Username",
-                        //       hintStyle: TextStyle(
-                        //           color: Color(0xFF898494), fontSize: 18),
-
-                        //       border: InputBorder.none,
-                        //     ),
-                        //   ),
-                        // ),
                         SizedBox(
                           height: 40,
                         ),
                         InkWell(
                           onTap: () {
                             //Get.to(AddPhoneNumber());
+                            if (isEnabled) Get.offAll(NavigationContainer());
                           },
                           child: Container(
                             width: w * 0.75,
@@ -210,18 +218,20 @@ class _PasswordState extends State<Password> {
                               //   color: Color(0xFFECEDEF),
                               // ),
                               borderRadius: BorderRadius.circular(16),
-                              color: const Color(0xFFF6F7FE),
+                              color: isEnabled ? purple : Color(0xFFF6F7FE),
                             ),
                             child: Row(
                               children: [
                                 Expanded(child: Container()),
                                 Container(
-                                  child: const Text(
+                                  child: Text(
                                     "Get Started",
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 17,
-                                        color: Colors.grey),
+                                        color: isEnabled
+                                            ? Colors.white
+                                            : Colors.grey),
                                   ),
                                 ),
                                 Expanded(child: Container()),

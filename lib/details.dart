@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:pollpe/add_phone_number.dart';
+import 'package:pollpe/constants.dart';
 
 class Details extends StatefulWidget {
   const Details({super.key});
@@ -11,6 +12,15 @@ class Details extends StatefulWidget {
 }
 
 class _DetailsState extends State<Details> {
+  final firstNameController = TextEditingController();
+  final lastNameController = TextEditingController();
+  final userNameController = TextEditingController();
+  bool isEnabled = false;
+
+  bool textField1Filled = false;
+  bool textField2Filled = false;
+  bool textField3Filled = false;
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -116,7 +126,8 @@ class _DetailsState extends State<Details> {
                             color: const Color(0xFFF6F7FE),
                             borderRadius: BorderRadius.circular(16),
                           ),
-                          child: const TextField(
+                          child: TextField(
+                            controller: firstNameController,
                             decoration: InputDecoration(
                               //focusColor: Colors.,
                               prefixIcon: Icon(Icons.person),
@@ -126,6 +137,23 @@ class _DetailsState extends State<Details> {
 
                               border: InputBorder.none,
                             ),
+                            onChanged: (content) {
+                              if (content != "") {
+                                textField1Filled = true;
+                                if (textField1Filled &&
+                                    textField2Filled &&
+                                    textField3Filled) {
+                                  setState(() {
+                                    isEnabled = true;
+                                  });
+                                }
+                              } else {
+                                textField1Filled = false;
+                                setState(() {
+                                  isEnabled = false;
+                                });
+                              }
+                            },
                           ),
                         ),
                         SizedBox(
@@ -144,7 +172,8 @@ class _DetailsState extends State<Details> {
                             color: const Color(0xFFF6F7FE),
                             borderRadius: BorderRadius.circular(16),
                           ),
-                          child: const TextField(
+                          child: TextField(
+                            controller: lastNameController,
                             decoration: InputDecoration(
                               //focusColor: Colors.,
                               prefixIcon: Icon(Icons.person),
@@ -154,6 +183,23 @@ class _DetailsState extends State<Details> {
 
                               border: InputBorder.none,
                             ),
+                            onChanged: (content) {
+                              if (content != "") {
+                                textField2Filled = true;
+                                if (textField1Filled &&
+                                    textField2Filled &&
+                                    textField3Filled) {
+                                  setState(() {
+                                    isEnabled = true;
+                                  });
+                                }
+                              } else {
+                                textField2Filled = false;
+                                setState(() {
+                                  isEnabled = false;
+                                });
+                              }
+                            },
                           ),
                         ),
                         SizedBox(
@@ -172,7 +218,8 @@ class _DetailsState extends State<Details> {
                             color: const Color(0xFFF6F7FE),
                             borderRadius: BorderRadius.circular(16),
                           ),
-                          child: const TextField(
+                          child: TextField(
+                            controller: userNameController,
                             decoration: InputDecoration(
                               //focusColor: Colors.,
                               prefixIcon: Icon(Icons.person),
@@ -182,6 +229,23 @@ class _DetailsState extends State<Details> {
 
                               border: InputBorder.none,
                             ),
+                            onChanged: (content) {
+                              if (content != "") {
+                                textField3Filled = true;
+                                if (textField1Filled &&
+                                    textField2Filled &&
+                                    textField3Filled) {
+                                  setState(() {
+                                    isEnabled = true;
+                                  });
+                                }
+                              } else {
+                                textField3Filled = false;
+                                setState(() {
+                                  isEnabled = false;
+                                });
+                              }
+                            },
                           ),
                         ),
                       ],
@@ -279,7 +343,7 @@ class _DetailsState extends State<Details> {
                     ),
                     InkWell(
                       onTap: () {
-                        Get.to(AddPhoneNumber());
+                        if (isEnabled) Get.to(AddPhoneNumber());
                       },
                       child: Container(
                         width: w * 0.75,
@@ -290,18 +354,19 @@ class _DetailsState extends State<Details> {
                           //   color: Color(0xFFECEDEF),
                           // ),
                           borderRadius: BorderRadius.circular(16),
-                          color: const Color(0xFFF6F7FE),
+                          color: isEnabled ? purple : Color(0xFFF6F7FE),
                         ),
                         child: Row(
                           children: [
                             Expanded(child: Container()),
                             Container(
-                              child: const Text(
+                              child: Text(
                                 "Continue",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20,
-                                    color: Colors.grey),
+                                    color:
+                                        isEnabled ? Colors.white : Colors.grey),
                               ),
                             ),
                             Expanded(child: Container()),
