@@ -4,14 +4,9 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+The project is aimed to onboard a new user to the PollPe App as well as sign-in an already existing user to the app.
 
-A few resources to get you started if this is your first Flutter project:
+The flow of the app is as followed:
+Welcome Screen(welcome.dart) -> (Google sign-up(New User)->Details Screen(details.dart)->Verify Phone Number(Trucaller verification or Through Entering Phone Number Manually(add_phone_number.dart) -> OTP Verification(otp.dart)) -> Confirm Password screen(password.dart) or Signing in(Through google sign-in or entering details manually)) -> Navigation Container having multiple screens(Homepage(homepage.dart),Profile(profile.dart));
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
 # pollpe
