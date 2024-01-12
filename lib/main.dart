@@ -1,14 +1,18 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pollpe/add_phone_number.dart';
 import 'package:pollpe/details.dart';
 import 'package:pollpe/find_account.dart';
+import 'package:pollpe/firebase_options.dart';
 import 'package:pollpe/otp.dart';
 import 'package:pollpe/password.dart';
 import 'package:pollpe/signin.dart';
 import 'package:pollpe/welcome.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
@@ -19,13 +23,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Flutter Demo',
+      title: 'Poll Pe Onboarding',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Password(),
+      home: Welcome(),
     );
   }
 }

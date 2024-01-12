@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "595489089353",
+    "project_id": "pollpeonboarding",
+    "storage_bucket": "pollpeonboarding.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:595489089353:android:353657ceee49219678dc98",
+        "android_client_info": {
+          "package_name": "com.example.pollpe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "595489089353-ppn87ul1q306kihi1eptsfoce4busd5r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDopHkc3CLf2ku92qSsxw6vhQDX-Ha4PzE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "595489089353-ppn87ul1q306kihi1eptsfoce4busd5r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
